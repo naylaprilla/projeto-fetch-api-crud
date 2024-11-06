@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=DynaPuff:wght@400..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    
+    <title>CRUD Rick and Morty</title>
+</head>
+<body>
+    <header>
+        <h1>Rick and Morty</h1>
+    </header>
+
+    <main>
+        <!-- Formulário para buscar um personagem -->
+        <section id="search-character">
+            <h2>Buscar Personagem</h2>
+            <form action="#" method="get">
+                <label for="charId">ID do Personagem:</label>
+                <input type="number" id="charId" name="charId" placeholder="Digite o ID do personagem" required>
+                <button type="submit" id="btnGo">Buscar Personagem</button>
+            </form>
+        </section>
+
+        <!-- Exibição do personagem -->
+        <section id="character-display">
+            <h2>Personagem</h2>
+            <div id="character">
+                <img id="img" alt="Imagem do personagem">
+                <pre id="content"></pre>
+            </div>
+        </section>
+
+        <!-- Seção de operações CRUD -->
+        <section id="crud-operations">
+            <h2>Operações CRUD</h2>
+
+            <!-- Criar Personagem -->
+            <article id="create-character">
+                <h3>Criar Personagem</h3>
+                <form id="createForm">
+                    <label for="createName">Nome:</label>
+                    <input type="text" id="createName" name="createName" placeholder="Nome do personagem" required>
+
+                    <label for="createStatus">Status:</label>
+                    <input type="text" id="createStatus" name="createStatus" placeholder="Status (Alive, Dead, Unknown)" required>
+
+                    <label for="createSpecies">Espécie:</label>
+                    <input type="text" id="createSpecies" name="createSpecies" placeholder="Espécie do personagem" required>
+
+                    <button type="submit" id="btnCreate">Criar Personagem</button>
+                </form>
+            </article>
+
+            <!-- Atualizar Personagem -->
+            <article id="update-character">
+                <h3>Atualizar Personagem</h3>
+                <form id="updateForm">
+                    <label for="updateId">ID:</label>
+                    <input type="number" id="updateId" name="updateId" placeholder="ID do personagem" required>
+
+                    <label for="updateName">Novo Nome:</label>
+                    <input type="text" id="updateName" name="updateName" placeholder="Novo nome do personagem" required>
+
+                    <label for="updateStatus">Novo Status:</label>
+                    <input type="text" id="updateStatus" name="updateStatus" placeholder="Novo status do personagem" required>
+
+                    <label for="updateSpecies">Nova Espécie:</label>
+                    <input type="text" id="updateSpecies" name="updateSpecies" placeholder="Nova espécie do personagem" required>
+
+                    <button type="submit" id="btnUpdate">Atualizar Personagem</button>
+                </form>
+            </article>
+
+            <!-- Deletar Personagem -->
+            <article id="delete-character">
+                <h3>Deletar Personagem</h3>
+                <form id="deleteForm">
+                    <label for="deleteId">ID do Personagem a Deletar:</label>
+                    <input type="number" id="deleteId" name="deleteId" placeholder="ID do personagem a deletar" required>
+                    <button type="submit" id="btnDelete">Deletar Personagem</button>
+                </form>
+            </article>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Prillanart</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

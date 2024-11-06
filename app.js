@@ -53,107 +53,6 @@ const createCharacter = (name, status, species) => {
   });
 };
 
-// Buscar um personagem
-btnGo.addEventListener('click', (event) => {
-  event.preventDefault();
-  fetchApi(charId.value)
-    .then((result) => {
-      if (result) {
-        content.textContent = `Dados do personagem: ${JSON.stringify(result, null, 2)}`;
-        image.src = result.image;
-      } else {
-        content.textContent = 'Personagem não encontrado.';
-        image.src = '';
-      }
-    });
-});
-
-// Mostrar campos para criar personagem
-btnCreate.addEventListener('click', () => {
-  createFields.style.display = 'block';
-  updateFields.style.display = 'none';
-  deleteFields.style.display = 'none';
-});
-
-// Criar personagem
-btnCreate.addEventListener('click', () => {
-  const name = createName.value;
-  const status = createStatus.value;
-  const species = createSpecies.value;
-
-  if (name && status && species) {
-    createCharacter(name, status, species)
-      .then((newCharacter) => {
-        content.textContent = `Personagem criado: ${JSON.stringify(newCharacter, null, 2)}`;
-        image.src = newCharacter.image;
-        // Limpa os campos após a criação
-        // createName.value = '';
-        // createStatus.value = '';
-        // createSpecies.value = '';
-      });
-  } else {
-    content.textContent = "Todos os campos são obrigatórios para criar um personagem.";
-  }
-});
-
-// Mostrar campos para atualizar personagem
-btnUpdate.addEventListener('click', () => {
-  createFields.style.display = 'none';
-  updateFields.style.display = 'block';
-  deleteFields.style.display = 'none';
-});
-
-// Atualizar personagem
-btnUpdate.addEventListener('click', () => {
-  const id = updateId.value;
-  const name = updateName.value;
-  const status = updateStatus.value;
-  const species = updateSpecies.value;
-
-  if (id && name && status && species) {
-    updateCharacter(id, name, status, species)
-      .then((updatedCharacter) => {
-        content.textContent = `Personagem atualizado: ${JSON.stringify(updatedCharacter, null, 2)}`;
-        image.src = updatedCharacter.image;
-        // Limpa os campos após a atualização
-        updateId.value = '';
-        updateName.value = '';
-        updateStatus.value = '';
-        updateSpecies.value = '';
-      });
-  } else {
-    content.textContent = "Todos os campos são obrigatórios para atualizar um personagem.";
-  }
-});
-
-// Mostrar campos para deletar personagem
-btnDelete.addEventListener('click', () => {
-  createFields.style.display = 'none';
-  updateFields.style.display = 'none';
-  deleteFields.style.display = 'block';
-});
-
-// Deletar personagem
-btnDelete.addEventListener('click', () => {
-  const id = deleteId.value;
-
-  if (id) {
-    deleteCharacter(id)
-      .then((response) => {
-        content.textContent = response.message;
-        image.src = '';
-        // Limpa o campo de ID após a exclusão
-        deleteId.value = '';
-      })
-      .catch((error) => {
-        content.textContent = "Erro ao deletar o personagem.";
-        console.error(error);
-      });
-  } else {
-    content.textContent = "Por favor, digite o ID para deletar o personagem.";
-  }
-});
-
 // Função para atualizar um personagem (simulado)
 const updateCharacter = (id, name, status, species) => {
   return new Promise((resolve) => {
@@ -177,3 +76,112 @@ const deleteCharacter = (id) => {
     }, 1000);
   });
 };
+
+// Buscar um personagem
+btnGo.addEventListener('click', (event) => {
+  event.preventDefault();
+  fetchApi(charId.value)
+    .then((result) => {
+      if (result) {
+        content.textContent = `Dados do personagem: ${JSON.stringify(result, null, 2)}`;
+        image.src = result.image;
+      } else {
+        content.textContent = 'Personagem não encontrado.';
+        image.src = '';
+      }
+    });
+});
+
+// Mostrar campos para criação de personagem
+btnCreate.addEventListener('click', () => {
+  event.preventDefault();
+  createFields.style.display = 'block';
+  updateFields.style.display = 'none';
+  deleteFields.style.display = 'none';
+});
+
+// Criar personagem
+btnCreate.addEventListener('click', () => {
+  event.preventDefault();
+  const name = createName.value;
+  const status = createStatus.value;
+  const species = createSpecies.value;
+
+  if (name && status && species) {
+    createCharacter(name, status, species)
+      .then((newCharacter) => {
+        content.textContent = `Personagem criado: ${JSON.stringify(newCharacter, null, 2)}`;
+        image.src = newCharacter.image;
+
+        // Limpa os campos após a criação
+        createName.value = '';
+        createStatus.value = '';
+        createSpecies.value = '';
+      });
+  } else {
+    content.textContent = "Todos os campos são obrigatórios para criar um personagem.";
+  }
+});
+
+// Mostrar campos para atualizar personagem
+btnUpdate.addEventListener('click', () => {
+  event.preventDefault();
+  createFields.style.display = 'none';
+  updateFields.style.display = 'block';
+  deleteFields.style.display = 'none';
+});
+
+// Atualizar personagem
+btnUpdate.addEventListener('click', () => {
+  event.preventDefault();
+  const id = updateId.value;
+  const name = updateName.value;
+  const status = updateStatus.value;
+  const species = updateSpecies.value;
+
+  if (id && name && status && species) {
+    updateCharacter(id, name, status, species)
+      .then((updatedCharacter) => {
+        content.textContent = `Personagem atualizado: ${JSON.stringify(updatedCharacter, null, 2)}`;
+        image.src = updatedCharacter.image;
+
+        // Limpa os campos após a atualização
+        updateId.value = '';
+        updateName.value = '';
+        updateStatus.value = '';
+        updateSpecies.value = '';
+      });
+  } else {
+    content.textContent = "Todos os campos são obrigatórios para atualizar um personagem.";
+  }
+});
+
+// Mostrar campos para deletar personagem
+btnDelete.addEventListener('click', () => {
+  event.preventDefault();
+  createFields.style.display = 'none';
+  updateFields.style.display = 'none';
+  deleteFields.style.display = 'block';
+});
+
+// Deletar personagem
+btnDelete.addEventListener('click', () => {
+  event.preventDefault();
+  const id = deleteId.value;
+
+  if (id) {
+    deleteCharacter(id)
+      .then((response) => {
+        content.textContent = response.message;
+        image.src = '';
+        // Limpa o campo de ID após a exclusão
+        deleteId.value = '';
+      })
+      .catch((error) => {
+        content.textContent = "Erro ao deletar o personagem.";
+        console.error(error);
+      });
+  } else {
+    content.textContent = "Por favor, digite o ID para deletar o personagem.";
+  }
+});

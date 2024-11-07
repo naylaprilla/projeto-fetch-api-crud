@@ -26,7 +26,7 @@ const updateFields = document.getElementById('update-character');
 const deleteFields = document.getElementById('delete-character');
 
 // URL base da API
-const baseUrl = "https://rickandmortyapi.com/api/character";
+const baseUrl = "https://rickandmortyapi.com/api/api/character";
 
 // Função para buscar um personagem por ID
 const fetchApi = (value) => {
